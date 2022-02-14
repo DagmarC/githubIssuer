@@ -11,9 +11,10 @@ body string (when ci is true)
 
 
 Usage:
-go run . -ci --token="g.......mwUyY" --title="post test" --body="body go test" --repo="DagmarC/gopl-solutions"
+go run . -ci --token="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" --title="post test" --body="body go test" --repo="DagmarC/gopl-solutions"
 
 go run . -ri --repo="DagmarC/gopl-solutions"
 
 go run . -st repo:golang/go is:open json decoder
 
+go run . -ui --token="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" --title="EDIIIT test" --body="body go test" --repo="DagmarC/gopl-solutions" --n=1

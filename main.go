@@ -16,8 +16,12 @@ import (
 	"github.com/DagmarC/githubIssuer/github"
 )
 
-var ri = flag.Bool("ri", false, "Get the repo issues.")
 var repo = flag.String("repo", "DagmarC/gopl-solutions", "Get the repo issues.")
+
+var ri = flag.Bool("ri", false, "Get the repo issues.")
+
+var ui = flag.Bool("ui", false, "Update the repo issue.")
+var n = flag.Int("n", 0, "Issue number.")
 
 var ci = flag.Bool("ci", false, "Create the repo issue.")
 var title = flag.String("title", " Title", "Create new repo issue.")
@@ -31,6 +35,7 @@ var token = flag.String("token", "", "github auth token")
 func main() {
 
 	flag.Parse()
+	fmt.Println(*token, *ui, body, *title, *n)
 
 	if *ri {
 		resultR, err := github.GetRepoIssues(*repo)
@@ -62,6 +67,15 @@ func main() {
 			log.Fatal(err)
 		}
 		fmt.Println("------Created issue------")
+		fmt.Println(*resp)
+	}
+
+	if *ui {
+		resp, err := github.UpdateRepoIssues(*repo, *title, *body, *token, *n)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println("------Updated issue------")
 		fmt.Println(*resp)
 	}
 }

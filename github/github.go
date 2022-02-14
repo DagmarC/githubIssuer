@@ -48,6 +48,7 @@ type IssueReq struct {
 	State     string   `json:"state,omitempty"`
 	Milestone *int      `json:"milestone,omitempty"`
 	Assignees *[]string `json:"assignees,omitempty"`
+	IssueNumber int 	`json:issue_number,omitempty`
 }
 
 //!-
